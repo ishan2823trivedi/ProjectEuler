@@ -1,0 +1,73 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+#include <math.h>
+
+using namespace std;
+bool isPalindrome(int num){
+    //1 for palindrome
+    int numcpy1=num , numcpy2 = num,count=0;
+    int num1=0;
+    int rem;
+while(numcpy1!=0)
+{
+    numcpy1=numcpy1/10;
+    count++;
+}
+for(int a1=count-1;a1>=0;a1--)
+{   
+   rem = numcpy2%10;
+   num1=num1 + (rem*pow(10,a1));
+   numcpy2= numcpy2/10;
+}
+
+if(num==num1)
+return true;
+else  
+return false; 
+}
+
+int main(){
+    int t;
+    cin >> t;
+    for(int a0 = 0; a0 < t; a0++){
+        int n,pro=0;
+        cin >> n;
+        int max=0;
+        
+        for(int a2=100;a2<=999;a2++){
+            for(int a3=100;a3<=999;a3++){
+                pro=a2*a3;
+                
+                if(pro>=n)
+                break;
+                if((pro>max) && (isPalindrome(pro)))
+                    max=pro;
+                
+
+            }
+        }
+        cout<<max<<"\n";}
+
+    
+    return 0;
+}
